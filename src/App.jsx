@@ -40,8 +40,7 @@ export default function App() {
 
       <section className="hero section">
         <div className="copy">
-          <div className="badge">Лендинги · приложения · автоматизация</div>
-          <h1>Лендинги, приложения и автоматизация для бизнеса, которому важно выглядеть современно</h1>
+          <h1>Всё для автоматизации вашего бизнеса</h1>
           <p>Чистые интерфейсы, понятные сценарии и цифровые решения, которые помогают быстрее работать с заявками, клиентами и внутренними процессами.</p>
           <p className="muted">Без перегруженных систем, сложных интерфейсов и ощущения «старого сайта».</p>
           <div className="actions">
@@ -60,14 +59,12 @@ export default function App() {
       <section id="solutions" className="section twoCols">
         <ImageBlock src="/images/problems.png" alt="Переход от хаоса в процессах к понятной цифровой системе" />
         <div className="copy">
-          <h2>Заявки, таблицы и переписки не должны мешать работе</h2>
           <div className="problemList">
             <p>Заявки теряются между сообщениями.</p>
             <p>Информация хранится в разных сервисах.</p>
             <p>Рутинные действия начинают занимать слишком много времени.</p>
             <p>А интерфейсы выглядят так, будто их давно пора обновить.</p>
           </div>
-          <h3>Что делаем</h3>
           <div className="chips">
             {['Лендинги', 'Формы и квизы', 'Мини-приложения', 'Панели управления', 'Автоматизация процессов'].map((item) => (
               <span key={item}>{item}</span>
@@ -78,10 +75,6 @@ export default function App() {
       </section>
 
       <section id="build" className="section">
-        <div className="sectionHead">
-          <h2>Что можно собрать</h2>
-          <p>Короткий набор решений, которые закрывают основные задачи малого бизнеса, экспертов и современных проектов.</p>
-        </div>
         <div className="grid">
           {buildItems.map(([title, text, Icon]) => (
             <article className="card" key={title}>
@@ -96,7 +89,6 @@ export default function App() {
 
       <section id="product" className="section twoCols productSection">
         <div className="copy">
-          <h2>Так выглядят современные digital-продукты</h2>
           <p>Минималистичные интерфейсы, чистые панели, мобильные экраны и рабочие системы без визуального шума и перегруженности.</p>
           <p className="muted">Каждый проект собирается под конкретную задачу — с понятной логикой и удобной структурой.</p>
         </div>
@@ -104,9 +96,6 @@ export default function App() {
       </section>
 
       <section id="process" className="section process">
-        <div className="sectionHead">
-          <h2>Как строится работа</h2>
-        </div>
         <ImageBlock src="/images/process.png" alt="Визуал рабочего процесса от задачи до запуска" />
         <div className="steps">
           {steps.map(([title, text], index) => (
@@ -121,7 +110,6 @@ export default function App() {
 
       <section id="contact" className="section final">
         <div className="copy">
-          <h2>Цифровые решения, с которыми бизнес выглядит современно и работает быстрее</h2>
           <p>Лендинг, приложение или автоматизация могут заменить хаос из таблиц, переписок и ручных процессов.</p>
           <p className="muted">Понятные интерфейсы, современный визуал и системы, которыми удобно пользоваться каждый день.</p>
           <a className="button primary" href="#contact">Обсудить проект <ArrowRight size={18} /></a>
