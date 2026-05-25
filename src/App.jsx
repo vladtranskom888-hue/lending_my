@@ -17,7 +17,11 @@ const steps = [
 ];
 
 function ImageBlock({ src, alt }) {
-  return <div className="visual"><img src={src} alt={alt} /></div>;
+  return (
+    <div className="visual">
+      <img src={src} alt={alt} loading="lazy" />
+    </div>
+  );
 }
 
 export default function App() {
@@ -28,8 +32,8 @@ export default function App() {
         <nav>
           <a href="#solutions">Решения</a>
           <a href="#build">Возможности</a>
+          <a href="#product">Продукт</a>
           <a href="#process">Процесс</a>
-          <a href="#contact">Контакты</a>
         </nav>
         <a className="smallButton" href="#contact">Обсудить проект</a>
       </header>
@@ -45,14 +49,16 @@ export default function App() {
             <a className="button secondary" href="#build">Посмотреть возможности</a>
           </div>
           <div className="features">
-            {['Современный визуал', 'Быстрый запуск', 'Удобные интерфейсы', 'Решения под задачу'].map((item) => <span key={item}><Check size={16} />{item}</span>)}
+            {['Современный визуал', 'Быстрый запуск', 'Удобные интерфейсы', 'Решения под задачу'].map((item) => (
+              <span key={item}><Check size={16} />{item}</span>
+            ))}
           </div>
         </div>
-        <ImageBlock src="/images/hero.jpg" alt="Современный рабочий интерфейс на ноутбуке" />
+        <ImageBlock src="/images/hero.png" alt="Современный рабочий интерфейс на ноутбуке" />
       </section>
 
       <section id="solutions" className="section twoCols">
-        <ImageBlock src="/images/problems.jpg" alt="Переход от хаоса в процессах к понятной цифровой системе" />
+        <ImageBlock src="/images/problems.png" alt="Переход от хаоса в процессах к понятной цифровой системе" />
         <div className="copy">
           <h2>Заявки, таблицы и переписки не должны мешать работе</h2>
           <div className="problemList">
@@ -63,36 +69,64 @@ export default function App() {
           </div>
           <h3>Что делаем</h3>
           <div className="chips">
-            {['Лендинги', 'Формы и квизы', 'Мини-приложения', 'Панели управления', 'Автоматизация процессов'].map((item) => <span key={item}>{item}</span>)}
+            {['Лендинги', 'Формы и квизы', 'Мини-приложения', 'Панели управления', 'Автоматизация процессов'].map((item) => (
+              <span key={item}>{item}</span>
+            ))}
           </div>
           <p className="muted">Чтобы всё работало быстрее, выглядело чище и не усложняло ежедневную работу.</p>
         </div>
       </section>
 
       <section id="build" className="section">
-        <div className="sectionHead"><h2>Что можно собрать</h2><p>Короткий набор решений, которые закрывают основные задачи малого бизнеса, экспертов и современных проектов.</p></div>
-        <div className="grid">
-          {buildItems.map(([title, text, Icon]) => <article className="card" key={title}><Icon size={24} /><h3>{title}</h3><p>{text}</p></article>)}
+        <div className="sectionHead">
+          <h2>Что можно собрать</h2>
+          <p>Короткий набор решений, которые закрывают основные задачи малого бизнеса, экспертов и современных проектов.</p>
         </div>
-        <ImageBlock src="/images/build.jpg" alt="Набор цифровых решений и интерфейсов для бизнеса" />
+        <div className="grid">
+          {buildItems.map(([title, text, Icon]) => (
+            <article className="card" key={title}>
+              <Icon size={24} />
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+        <ImageBlock src="/images/build.png" alt="Набор цифровых решений и интерфейсов для бизнеса" />
       </section>
 
-      <section className="section twoCols">
-        <div className="copy"><h2>Так выглядят современные digital-продукты</h2><p>Минималистичные интерфейсы, чистые панели, мобильные экраны и рабочие системы без визуального шума и перегруженности.</p><p className="muted">Каждый проект собирается под конкретную задачу — с понятной логикой и удобной структурой.</p></div>
-        <ImageBlock src="/images/product.jpg" alt="Современные интерфейсы, дашборды и мобильные экраны" />
+      <section id="product" className="section twoCols productSection">
+        <div className="copy">
+          <h2>Так выглядят современные digital-продукты</h2>
+          <p>Минималистичные интерфейсы, чистые панели, мобильные экраны и рабочие системы без визуального шума и перегруженности.</p>
+          <p className="muted">Каждый проект собирается под конкретную задачу — с понятной логикой и удобной структурой.</p>
+        </div>
+        <ImageBlock src="/images/product.png" alt="Современные интерфейсы, дашборды и мобильные экраны" />
       </section>
 
       <section id="process" className="section process">
-        <div className="sectionHead"><h2>Как строится работа</h2></div>
-        <ImageBlock src="/images/process.jpg" alt="Визуал рабочего процесса от задачи до запуска" />
+        <div className="sectionHead">
+          <h2>Как строится работа</h2>
+        </div>
+        <ImageBlock src="/images/process.png" alt="Визуал рабочего процесса от задачи до запуска" />
         <div className="steps">
-          {steps.map(([title, text], index) => <article className="step" key={title}><span>{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}
+          {steps.map(([title, text], index) => (
+            <article className="step" key={title}>
+              <span>{index + 1}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
         </div>
       </section>
 
       <section id="contact" className="section final">
-        <div className="copy"><h2>Цифровые решения, с которыми бизнес выглядит современно и работает быстрее</h2><p>Лендинг, приложение или автоматизация могут заменить хаос из таблиц, переписок и ручных процессов.</p><p className="muted">Понятные интерфейсы, современный визуал и системы, которыми удобно пользоваться каждый день.</p><a className="button primary" href="https://t.me/vladkolikov">Обсудить проект <ArrowRight size={18} /></a></div>
-        <ImageBlock src="/images/final.jpg" alt="Премиальный рабочий интерфейс для финального блока сайта" />
+        <div className="copy">
+          <h2>Цифровые решения, с которыми бизнес выглядит современно и работает быстрее</h2>
+          <p>Лендинг, приложение или автоматизация могут заменить хаос из таблиц, переписок и ручных процессов.</p>
+          <p className="muted">Понятные интерфейсы, современный визуал и системы, которыми удобно пользоваться каждый день.</p>
+          <a className="button primary" href="#contact">Обсудить проект <ArrowRight size={18} /></a>
+        </div>
+        <ImageBlock src="/images/final.png" alt="Премиальный рабочий интерфейс для финального блока сайта" />
       </section>
     </main>
   );
