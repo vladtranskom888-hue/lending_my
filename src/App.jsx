@@ -89,11 +89,15 @@ export default function App() {
       </section>
 
       <section id="product" className="section twoCols productSection">
-        <div className="copy">
-          <p>Минималистичные интерфейсы, чистые панели, мобильные экраны и рабочие системы без визуального шума и перегруженности.</p>
-          <p className="muted">Каждый проект собирается под конкретную задачу — с понятной логикой и удобной структурой.</p>
+        <div className="copy productCopy">
+          <span className="productEyebrow">Готовый продукт</span>
+          <h2>Интерфейс, который ускоряет решения команды</h2>
+          <p>Чёткая структура экранов, короткие сценарии и понятные статусы без лишних шагов.</p>
+          <p className="muted">Запускается быстро, работает стабильно, масштабируется под рост задач.</p>
         </div>
-        <ImageBlock src="/images/product.png" alt="Современные интерфейсы, дашборды и мобильные экраны" />
+        <div className="productVisualWrap">
+          <ImageBlock src="/images/product.png" alt="Современные интерфейсы, дашборды и мобильные экраны" />
+        </div>
       </section>
 
       <section id="process" className="section process">
