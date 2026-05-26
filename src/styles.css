@@ -378,6 +378,66 @@ p {
   font-weight: 700;
 }
 
+.productSection {
+  padding: clamp(36px, 5vw, 56px);
+  border-radius: 42px;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(124, 140, 255, 0.12), transparent 38%),
+    radial-gradient(circle at 86% 86%, rgba(142, 124, 255, 0.10), transparent 42%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.64));
+  border: 1px solid rgba(17, 17, 17, 0.07);
+  box-shadow: 0 26px 64px rgba(17, 17, 17, 0.09);
+  gap: clamp(44px, 7vw, 92px);
+}
+
+.productCopy {
+  gap: 8px;
+}
+
+.productEyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 140, 255, 0.24);
+  background: rgba(255, 255, 255, 0.84);
+  color: rgba(17, 17, 17, 0.72);
+  font-size: 12px;
+  font-weight: 640;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.productSection h2 {
+  max-width: 15ch;
+  margin-top: 8px;
+  font-size: clamp(34px, 4.3vw, 54px);
+  line-height: 1.04;
+}
+
+.productSection p {
+  max-width: 50ch;
+  margin-top: 14px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.productVisualWrap {
+  width: 100%;
+}
+
+.productSection .visual {
+  border-radius: 34px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  box-shadow: 0 28px 68px rgba(17, 17, 17, 0.15);
+}
+
+.productSection .visual img {
+  min-height: 420px;
+  height: clamp(380px, 40vw, 540px);
+}
+
 .final {
   margin-bottom: 64px;
   padding: 56px;
@@ -447,6 +507,26 @@ p {
   .card,
   .step {
     padding: 28px;
+  }
+
+  .productSection {
+    padding: 28px 20px;
+    border-radius: 30px;
+    gap: 34px;
+  }
+
+  .productSection h2 {
+    max-width: 17ch;
+    font-size: clamp(30px, 8vw, 44px);
+  }
+
+  .productSection .visual {
+    border-radius: 28px;
+  }
+
+  .productSection .visual img {
+    min-height: 320px;
+    height: clamp(320px, 66vw, 430px);
   }
 
   .final {
