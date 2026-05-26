@@ -40,9 +40,10 @@ export default function App() {
 
       <section className="hero section">
         <div className="copy">
-          <h1>Всё для автоматизации вашего бизнеса</h1>
-          <p>Чистые интерфейсы, понятные сценарии и цифровые решения, которые помогают быстрее работать с заявками, клиентами и внутренними процессами.</p>
-          <p className="muted">Без перегруженных систем, сложных интерфейсов и ощущения «старого сайта».</p>
+          <span className="eyebrow">Premium digital studio</span>
+          <h1>Цифровые системы, которые ускоряют бизнес</h1>
+          <p>Лендинги, интерфейсы и автоматизация — в едином стиле, без визуального шума и лишней сложности.</p>
+          <p className="muted">Быстро запускаем и аккуратно масштабируем под ваши процессы.</p>
           <div className="actions">
             <a className="button primary" href="#contact">Обсудить проект <ArrowRight size={18} /></a>
             <a className="button secondary" href="#build">Посмотреть возможности</a>
