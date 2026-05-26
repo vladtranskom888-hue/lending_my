@@ -1,24 +1,24 @@
 import { ArrowRight, Check, Layers, LayoutDashboard, Workflow, FormInput, Link2, Sparkles } from 'lucide-react';
 
 const buildItems = [
-  ['Лендинги', 'Страницы под запуск и продажи.', Layers, 'statement'],
-  ['Веб-приложения', 'Кабинеты и рабочие интерфейсы.', Sparkles, 'compact'],
-  ['Автоматизация', 'Сценарии без ручной рутины.', Workflow, 'minimal'],
-  ['Дашборды', 'Ключевые метрики в одном экране.', LayoutDashboard, 'statement'],
-  ['Квизы и формы', 'Заявки без лишних шагов.', FormInput, 'compact'],
-  ['Интеграции', 'CRM, таблицы и боты в одной логике.', Link2, 'minimal'],
+  ['Лендинги', 'Современные страницы для услуг, продуктов и рекламы.', Layers],
+  ['Веб-приложения', 'Интерфейсы для клиентов, заявок и внутренних задач.', Sparkles],
+  ['Автоматизация', 'Сценарии, которые убирают повторяющиеся действия.', Workflow],
+  ['Дашборды', 'Панели с аналитикой, статусами и ключевыми показателями.', LayoutDashboard],
+  ['Квизы и формы', 'Удобные сценарии для заявок и взаимодействия с клиентами.', FormInput],
+  ['Интеграции', 'Связка сервисов и процессов в единую систему.', Link2],
 ];
 
 const steps = [
-  ['Аудит', 'Фиксируем узкие места и приоритеты.'],
-  ['Дизайн-система', 'Собираем язык интерфейса под бренд.'],
-  ['Продакшн', 'Запускаем сайт, продукт или поток автоматизации.'],
-  ['Поддержка', 'Дорабатываем по данным и росту команды.'],
+  ['Разбираем задачу', 'Смотрим, как сейчас устроены процессы и что можно упростить.'],
+  ['Проектируем', 'Продумываем структуру, сценарии и интерфейсы.'],
+  ['Собираем', 'Создаём сайт, приложение или систему под задачи проекта.'],
+  ['Запускаем', 'Тестируем, подключаем и подготавливаем всё к работе.'],
 ];
 
-function ImageBlock({ src, alt, className = '' }) {
+function ImageBlock({ src, alt }) {
   return (
-    <div className={`visual ${className}`.trim()}>
+    <div className="visual">
       <img src={src} alt={alt} loading="lazy" />
     </div>
   );
@@ -32,15 +32,15 @@ export default function App() {
         <nav>
           <a href="#solutions">Решения</a>
           <a href="#build">Возможности</a>
+          <a href="#product">Продукт</a>
           <a href="#process">Процесс</a>
-          <a href="#contact">Контакт</a>
         </nav>
         <a className="smallButton" href="#contact">Обсудить проект</a>
       </header>
 
       <section className="hero section">
         <div className="copy">
-          <span className="eyebrow">Premium digital studio</span>
+          <span className="eyebrow">Премиальная студия цифровых решений</span>
           <h1>Цифровые системы, которые ускоряют бизнес</h1>
           <p>Лендинги, интерфейсы и автоматизация — в едином стиле, без визуального шума и лишней сложности.</p>
           <p className="muted">Быстро запускаем и аккуратно масштабируем под ваши процессы.</p>
@@ -57,42 +57,48 @@ export default function App() {
         <ImageBlock src="/images/hero.png" alt="Современный рабочий интерфейс на ноутбуке" />
       </section>
 
-      <section id="solutions" className="section splitStage">
-        <div className="copy narrow">
-          <p className="kicker">Там, где теряется скорость</p>
-          <h2>Мы убираем хаос и собираем управляемый digital-контур.</h2>
+      <section id="solutions" className="section twoCols">
+        <ImageBlock src="/images/problems.png" alt="Переход от хаоса в процессах к понятной цифровой системе" />
+        <div className="copy">
           <div className="problemList">
-            <p>Заявки расходятся по чатам.</p>
-            <p>Данные живут в разных сервисах.</p>
-            <p>Команда тратит время на повторяющиеся действия.</p>
+            <p>Заявки теряются между сообщениями.</p>
+            <p>Информация хранится в разных сервисах.</p>
+            <p>Рутинные действия начинают занимать слишком много времени.</p>
+            <p>А интерфейсы выглядят так, будто их давно пора обновить.</p>
           </div>
+          <div className="chips">
+            {['Лендинги', 'Формы и квизы', 'Мини-приложения', 'Панели управления', 'Автоматизация процессов'].map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+          <p className="muted">Чтобы всё работало быстрее, выглядело чище и не усложняло ежедневную работу.</p>
         </div>
-        <ImageBlock className="tallVisual" src="/images/problems.png" alt="Переход от хаоса в процессах к понятной цифровой системе" />
       </section>
 
-      <section className="statement section">
-        <p>Less noise. More velocity.</p>
-      </section>
-
-      <section id="build" className="section buildSection">
-        <div className="buildHead">
-          <h2>Что мы собираем</h2>
-          <p>От первого экрана до внутренних систем.</p>
-        </div>
-        <div className="grid mosaic">
-          {buildItems.map(([title, text, Icon, type]) => (
-            <article className={`card ${type}`} key={title}>
-              <Icon size={22} />
+      <section id="build" className="section">
+        <div className="grid">
+          {buildItems.map(([title, text, Icon]) => (
+            <article className="card" key={title}>
+              <Icon size={24} />
               <h3>{title}</h3>
               <p>{text}</p>
             </article>
           ))}
         </div>
+        <ImageBlock src="/images/build.png" alt="Набор цифровых решений и интерфейсов для бизнеса" />
       </section>
 
-      <section id="process" className="section process cinematic">
+      <section id="product" className="section twoCols productSection">
+        <div className="copy">
+          <p>Минималистичные интерфейсы, чистые панели, мобильные экраны и рабочие системы без визуального шума и перегруженности.</p>
+          <p className="muted">Каждый проект собирается под конкретную задачу — с понятной логикой и удобной структурой.</p>
+        </div>
+        <ImageBlock src="/images/product.png" alt="Современные интерфейсы, дашборды и мобильные экраны" />
+      </section>
+
+      <section id="process" className="section process">
         <ImageBlock src="/images/process.png" alt="Визуал рабочего процесса от задачи до запуска" />
-        <div className="steps uneven">
+        <div className="steps">
           {steps.map(([title, text], index) => (
             <article className="step" key={title}>
               <span>{index + 1}</span>
@@ -105,8 +111,8 @@ export default function App() {
 
       <section id="contact" className="section final">
         <div className="copy">
-          <h2>Готовы собрать систему, которая работает на рост.</h2>
-          <p className="muted">Короткий созвон — и понятный план запуска.</p>
+          <p>Лендинг, приложение или автоматизация могут заменить хаос из таблиц, переписок и ручных процессов.</p>
+          <p className="muted">Понятные интерфейсы, современный визуал и системы, которыми удобно пользоваться каждый день.</p>
           <a className="button primary" href="#contact">Обсудить проект <ArrowRight size={18} /></a>
         </div>
         <ImageBlock src="/images/final.png" alt="Премиальный рабочий интерфейс для финального блока сайта" />
