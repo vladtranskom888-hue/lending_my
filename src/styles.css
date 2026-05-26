@@ -13,6 +13,8 @@
   --shadow-soft: 0 14px 40px rgba(17, 17, 17, 0.07);
   --border-soft: rgba(17, 17, 17, 0.08);
   --tracking-tight: -0.045em;
+  --motion-smooth: 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  --motion-hover: 280ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 html {
@@ -81,6 +83,34 @@ nav {
   font-size: 15px;
 }
 
+nav a {
+  position: relative;
+  transition: color var(--motion-hover);
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0.35);
+  transform-origin: left;
+  opacity: 0;
+  transition: transform var(--motion-hover), opacity var(--motion-hover);
+}
+
+nav a:hover {
+  color: rgba(17, 17, 17, 0.88);
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+  opacity: 0.55;
+}
+
 .smallButton,
 .button {
   display: inline-flex;
@@ -89,7 +119,7 @@ nav {
   gap: 8px;
   border-radius: 999px;
   font-weight: 650;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform var(--motion-hover), box-shadow var(--motion-hover), background-color var(--motion-hover);
 }
 
 .smallButton {
@@ -119,8 +149,28 @@ nav {
 
 .button:hover,
 .smallButton:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: 0 20px 50px rgba(17, 17, 17, 0.15);
+}
+
+.motionSection {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--motion-smooth), transform var(--motion-smooth);
+}
+
+.motionSection.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.motionSection .visual {
+  transition: transform var(--motion-hover), box-shadow var(--motion-hover);
+}
+
+.motionSection .visual:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 30px 72px rgba(17, 17, 17, 0.12);
 }
 
 .section {
@@ -537,5 +587,23 @@ p {
   .final {
     padding: 30px 22px;
     border-radius: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .motionSection {
+    opacity: 1;
+    transform: none;
   }
 }

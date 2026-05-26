@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { ArrowRight, Check, Layers, LayoutDashboard, Workflow, FormInput, Link2, Sparkles } from 'lucide-react';
 
 const buildItems = [
@@ -24,7 +25,32 @@ function ImageBlock({ src, alt }) {
   );
 }
 
+
 export default function App() {
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll('.motionSection'));
+    if (!sections.length || typeof window === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      sections.forEach((section) => section.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -6% 0px' },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main>
       <header className="header">
@@ -57,7 +83,7 @@ export default function App() {
         <ImageBlock src="/images/hero.png" alt="Современный рабочий интерфейс на ноутбуке" />
       </section>
 
-      <section id="solutions" className="section twoCols">
+      <section id="solutions" className="section twoCols motionSection">
         <ImageBlock src="/images/problems.png" alt="Переход от хаоса в процессах к понятной цифровой системе" />
         <div className="copy">
           <div className="problemList">
@@ -100,7 +126,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="process" className="section process">
+      <section id="process" className="section process motionSection">
         <ImageBlock src="/images/process.png" alt="Визуал рабочего процесса от задачи до запуска" />
         <div className="steps">
           {steps.map(([title, text], index) => (
@@ -113,7 +139,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="contact" className="section final">
+      <section id="contact" className="section final motionSection">
         <div className="copy">
           <p>Лендинг, приложение или автоматизация могут заменить хаос из таблиц, переписок и ручных процессов.</p>
           <p className="muted">Понятные интерфейсы, современный визуал и системы, которыми удобно пользоваться каждый день.</p>
