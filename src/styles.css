@@ -378,6 +378,73 @@ p {
   font-weight: 700;
 }
 
+.productSection {
+  gap: clamp(44px, 7vw, 92px);
+}
+
+.productCopy {
+  gap: 8px;
+}
+
+.productEyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 140, 255, 0.24);
+  background: rgba(255, 255, 255, 0.84);
+  color: rgba(17, 17, 17, 0.72);
+  font-size: 12px;
+  font-weight: 640;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.productSection h2 {
+  max-width: 15ch;
+  margin-top: 8px;
+  font-size: clamp(34px, 4.3vw, 54px);
+  line-height: 1.04;
+}
+
+.productSection p {
+  max-width: 50ch;
+  margin-top: 14px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.productVisualWrap {
+  position: relative;
+  width: 100%;
+}
+
+.productVisualWrap::before {
+  content: "";
+  position: absolute;
+  inset: -18px -16px;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 40px;
+  background:
+    radial-gradient(circle at 24% 18%, rgba(124, 140, 255, 0.18), transparent 56%),
+    radial-gradient(circle at 80% 78%, rgba(142, 124, 255, 0.14), transparent 62%);
+}
+
+.productSection .visual {
+  position: relative;
+  z-index: 1;
+  border-radius: 34px;
+  border: 1px solid rgba(17, 17, 17, 0.06);
+  box-shadow: 0 18px 44px rgba(17, 17, 17, 0.12);
+}
+
+.productSection .visual img {
+  min-height: 420px;
+  height: clamp(380px, 40vw, 540px);
+}
+
 .final {
   margin-bottom: 64px;
   padding: 56px;
@@ -447,6 +514,24 @@ p {
   .card,
   .step {
     padding: 28px;
+  }
+
+  .productSection {
+    gap: 34px;
+  }
+
+  .productSection h2 {
+    max-width: 17ch;
+    font-size: clamp(30px, 8vw, 44px);
+  }
+
+  .productSection .visual {
+    border-radius: 28px;
+  }
+
+  .productSection .visual img {
+    min-height: 320px;
+    height: clamp(320px, 66vw, 430px);
   }
 
   .final {
