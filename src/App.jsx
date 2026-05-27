@@ -27,34 +27,24 @@ function ImageBlock({ src, alt }) {
 
 
 export default function App() {
-  const [formData, setFormData] = useState({ name: '', contact: '', task: '' });
+  const [formData, setFormData] = useState({ name: '', contact: '', message: '' });
   const [submitStatus, setSubmitStatus] = useState('idle');
   const [statusMessage, setStatusMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const webhookUrl = import.meta.env.VITE_LEAD_WEBHOOK_URL;
     const payload = {
       name: formData.name.trim(),
       contact: formData.contact.trim(),
-      task: formData.task.trim(),
-      source: 'contact_section',
-      createdAt: new Date().toISOString(),
+      message: formData.message.trim(),
     };
-
-    if (!webhookUrl) {
-      console.warn('VITE_LEAD_WEBHOOK_URL не задан: отправка заявок отключена.');
-      setSubmitStatus('fallback');
-      setStatusMessage('Заявка подготовлена. Скоро добавим отправку.');
-      return;
-    }
 
     try {
       setSubmitStatus('loading');
       setStatusMessage('');
 
-      const response = await fetch(webhookUrl, {
+      const response = await fetch('/api/lead', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +58,7 @@ export default function App() {
 
       setSubmitStatus('success');
       setStatusMessage('Заявка отправлена. Скоро свяжемся.');
-      setFormData({ name: '', contact: '', task: '' });
+      setFormData({ name: '', contact: '', message: '' });
     } catch (error) {
       console.error('Не удалось отправить заявку:', error);
       setSubmitStatus('error');
@@ -195,9 +185,9 @@ export default function App() {
           <label htmlFor="lead-task">Что нужно сделать?</label>
           <textarea
             id="lead-task"
-            name="task"
-            value={formData.task}
-            onChange={(event) => setFormData((prev) => ({ ...prev, task: event.target.value }))}
+            name="message"
+            value={formData.message}
+            onChange={(event) => setFormData((prev) => ({ ...prev, message: event.target.value }))}
             placeholder="Коротко опишите задачу"
             rows={4}
             required
