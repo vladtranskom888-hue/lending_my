@@ -25,6 +25,7 @@ function ImageBlock({ src, alt }) {
   );
 }
 
+
 export default function App() {
   const [formData, setFormData] = useState({
     name: '',
@@ -174,7 +175,48 @@ export default function App() {
             {status.message && <p className={`submitMessage ${status.type}`}>{status.message}</p>}
           </form>
         </div>
-        <ImageBlock src="/images/final.png" alt="Премиальный рабочий интерфейс для финального блока сайта" />
+        <form className="leadForm" onSubmit={handleSubmit}>
+          <label htmlFor="lead-name">Имя</label>
+          <input
+            id="lead-name"
+            name="name"
+            type="text"
+            value={formData.name}
+            onChange={(event) => setFormData((prev) => ({ ...prev, name: event.target.value }))}
+            placeholder="Как к вам обращаться"
+            required
+          />
+
+          <label htmlFor="lead-contact">Телефон или Telegram</label>
+          <input
+            id="lead-contact"
+            name="contact"
+            type="text"
+            value={formData.contact}
+            onChange={(event) => setFormData((prev) => ({ ...prev, contact: event.target.value }))}
+            placeholder="+7... или @username"
+            required
+          />
+
+          <label htmlFor="lead-task">Что нужно сделать?</label>
+          <textarea
+            id="lead-task"
+            name="task"
+            value={formData.task}
+            onChange={(event) => setFormData((prev) => ({ ...prev, task: event.target.value }))}
+            placeholder="Коротко опишите задачу"
+            rows={4}
+            required
+          />
+
+          <button className="button primary" type="submit" disabled={submitStatus === 'loading'}>
+            {submitStatus === 'loading' ? 'Отправляем...' : <>Запустить проект <ArrowRight size={18} /></>}
+          </button>
+
+          {statusMessage && (
+            <p className={`formMessage ${submitStatus}`}>{statusMessage}</p>
+          )}
+        </form>
       </section>
     </main>
   );
