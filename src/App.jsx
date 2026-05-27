@@ -46,23 +46,21 @@ export default function App() {
 
       const response = await fetch('/api/lead', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
-        throw new Error(`Ошибка отправки: ${response.status}`);
+        throw new Error('Failed to submit lead');
       }
 
       setSubmitStatus('success');
       setStatusMessage('Заявка отправлена. Скоро свяжемся.');
       setFormData({ name: '', contact: '', message: '' });
     } catch (error) {
-      console.error('Не удалось отправить заявку:', error);
-      setSubmitStatus('error');
-      setStatusMessage('Не удалось отправить заявку. Попробуйте позже.');
+      setStatus({ type: 'error', message: 'Не удалось отправить заявку. Попробуйте позже.' });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -156,8 +154,26 @@ export default function App() {
 
       <section id="contact" className="section final">
         <div className="copy">
-          <h2>Бизнесу нужен не ещё один сайт. Нужна система.</h2>
-          <p className="muted">Опишите задачу — и мы предложим понятный план запуска.</p>
+          <p>Лендинг, приложение или автоматизация могут заменить хаос из таблиц, переписок и ручных процессов.</p>
+          <p className="muted">Понятные интерфейсы, современный визуал и системы, которыми удобно пользоваться каждый день.</p>
+          <form className="contactForm" onSubmit={handleSubmit}>
+            <label>
+              Имя
+              <input name="name" value={formData.name} onChange={handleChange} required />
+            </label>
+            <label>
+              Контакт для связи
+              <input name="contact" value={formData.contact} onChange={handleChange} required />
+            </label>
+            <label>
+              Краткое описание задачи
+              <textarea name="task" value={formData.task} onChange={handleChange} required rows={4} />
+            </label>
+            <button className="button primary" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+            </button>
+            {status.message && <p className={`submitMessage ${status.type}`}>{status.message}</p>}
+          </form>
         </div>
         <form className="leadForm" onSubmit={handleSubmit}>
           <label htmlFor="lead-name">Имя</label>
