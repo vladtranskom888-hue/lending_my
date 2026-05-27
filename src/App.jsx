@@ -79,12 +79,11 @@ export default function App() {
 
       <section className="hero section">
         <div className="copy">
-          <span className="eyebrow">Премиальная студия цифровых решений</span>
-          <h1>Цифровые системы, которые ускоряют бизнес</h1>
-          <p>Лендинги, интерфейсы и автоматизация — в едином стиле, без визуального шума и лишней сложности.</p>
-          <p className="muted">Быстро запускаем и аккуратно масштабируем под ваши процессы.</p>
+          <h1>Цифровые системы для роста бизнеса</h1>
+          <p>Лендинги, интерфейсы и автоматизация — в единой системе, без лишней сложности.</p>
+          <p className="muted">Запускаем быстро, масштабируем под ваши процессы.</p>
           <div className="actions">
-            <a className="button primary" href="#contact">Обсудить проект <ArrowRight size={18} /></a>
+            <a className="button primary" href="#contact">Отправить заявку <ArrowRight size={18} /></a>
             <a className="button secondary" href="#build">Посмотреть возможности</a>
           </div>
           <div className="features">
