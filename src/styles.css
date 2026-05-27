@@ -377,7 +377,8 @@ p {
 }
 
 .productCopy {
-  gap: 8px;
+  gap: 14px;
+  max-width: 660px;
 }
 
 .productEyebrow {
@@ -396,17 +397,21 @@ p {
 }
 
 .productSection h2 {
-  max-width: 15ch;
+  max-width: 16ch;
   margin-top: 8px;
   font-size: clamp(34px, 4.3vw, 54px);
   line-height: 1.04;
 }
 
 .productSection p {
-  max-width: 50ch;
-  margin-top: 14px;
+  max-width: 62ch;
+  margin-top: 24px;
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.68;
+}
+
+.productSection p br {
+  display: none;
 }
 
 .productVisualWrap {
