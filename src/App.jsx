@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ArrowRight, Check, Layers, LayoutDashboard, Workflow, FormInput, Link2, Sparkles } from 'lucide-react';
 
 const buildItems = [
@@ -24,7 +25,57 @@ function ImageBlock({ src, alt }) {
   );
 }
 
+
 export default function App() {
+  const [formData, setFormData] = useState({ name: '', contact: '', task: '' });
+  const [submitStatus, setSubmitStatus] = useState('idle');
+  const [statusMessage, setStatusMessage] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const webhookUrl = import.meta.env.VITE_LEAD_WEBHOOK_URL;
+    const payload = {
+      name: formData.name.trim(),
+      contact: formData.contact.trim(),
+      task: formData.task.trim(),
+      source: 'contact_section',
+      createdAt: new Date().toISOString(),
+    };
+
+    if (!webhookUrl) {
+      console.warn('VITE_LEAD_WEBHOOK_URL не задан: отправка заявок отключена.');
+      setSubmitStatus('fallback');
+      setStatusMessage('Заявка подготовлена. Скоро добавим отправку.');
+      return;
+    }
+
+    try {
+      setSubmitStatus('loading');
+      setStatusMessage('');
+
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Ошибка отправки: ${response.status}`);
+      }
+
+      setSubmitStatus('success');
+      setStatusMessage('Заявка отправлена. Скоро свяжемся.');
+      setFormData({ name: '', contact: '', task: '' });
+    } catch (error) {
+      console.error('Не удалось отправить заявку:', error);
+      setSubmitStatus('error');
+      setStatusMessage('Не удалось отправить заявку. Попробуйте позже.');
+    }
+  };
+
   return (
     <main>
       <header className="header">
@@ -115,11 +166,51 @@ export default function App() {
 
       <section id="contact" className="section final">
         <div className="copy">
-          <p>Лендинг, приложение или автоматизация могут заменить хаос из таблиц, переписок и ручных процессов.</p>
-          <p className="muted">Понятные интерфейсы, современный визуал и системы, которыми удобно пользоваться каждый день.</p>
-          <a className="button primary" href="#contact">Обсудить проект <ArrowRight size={18} /></a>
+          <h2>Бизнесу нужен не ещё один сайт. Нужна система.</h2>
+          <p className="muted">Опишите задачу — и мы предложим понятный план запуска.</p>
         </div>
-        <ImageBlock src="/images/final.png" alt="Премиальный рабочий интерфейс для финального блока сайта" />
+        <form className="leadForm" onSubmit={handleSubmit}>
+          <label htmlFor="lead-name">Имя</label>
+          <input
+            id="lead-name"
+            name="name"
+            type="text"
+            value={formData.name}
+            onChange={(event) => setFormData((prev) => ({ ...prev, name: event.target.value }))}
+            placeholder="Как к вам обращаться"
+            required
+          />
+
+          <label htmlFor="lead-contact">Телефон или Telegram</label>
+          <input
+            id="lead-contact"
+            name="contact"
+            type="text"
+            value={formData.contact}
+            onChange={(event) => setFormData((prev) => ({ ...prev, contact: event.target.value }))}
+            placeholder="+7... или @username"
+            required
+          />
+
+          <label htmlFor="lead-task">Что нужно сделать?</label>
+          <textarea
+            id="lead-task"
+            name="task"
+            value={formData.task}
+            onChange={(event) => setFormData((prev) => ({ ...prev, task: event.target.value }))}
+            placeholder="Коротко опишите задачу"
+            rows={4}
+            required
+          />
+
+          <button className="button primary" type="submit" disabled={submitStatus === 'loading'}>
+            {submitStatus === 'loading' ? 'Отправляем...' : <>Запустить проект <ArrowRight size={18} /></>}
+          </button>
+
+          {statusMessage && (
+            <p className={`formMessage ${submitStatus}`}>{statusMessage}</p>
+          )}
+        </form>
       </section>
     </main>
   );
