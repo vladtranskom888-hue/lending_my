@@ -684,3 +684,34 @@ p {
 .submitMessage.error {
   color: #b42318;
 }
+
+.directContacts {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: rgba(86, 91, 100, 0.84);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.directContacts a {
+  color: inherit;
+  transition: color 0.22s ease, opacity 0.22s ease;
+}
+
+.directContacts a:hover {
+  color: rgba(17, 17, 17, 0.82);
+}
+
+.directContacts a:focus-visible {
+  outline: none;
+  color: rgba(17, 17, 17, 0.92);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.directContacts span {
+  opacity: 0.56;
+}
