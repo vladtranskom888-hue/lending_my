@@ -27,52 +27,40 @@ function ImageBlock({ src, alt }) {
 
 
 export default function App() {
-  const [formData, setFormData] = useState({ name: '', contact: '', task: '' });
-  const [submitStatus, setSubmitStatus] = useState('idle');
-  const [statusMessage, setStatusMessage] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    contact: '',
+    task: '',
+  });
+  const [status, setStatus] = useState({ type: 'idle', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = ({ target }) => {
+    setFormData((prev) => ({ ...prev, [target.name]: target.value }));
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const webhookUrl = import.meta.env.VITE_LEAD_WEBHOOK_URL;
-    const payload = {
-      name: formData.name.trim(),
-      contact: formData.contact.trim(),
-      task: formData.task.trim(),
-      source: 'contact_section',
-      createdAt: new Date().toISOString(),
-    };
-
-    if (!webhookUrl) {
-      console.warn('VITE_LEAD_WEBHOOK_URL не задан: отправка заявок отключена.');
-      setSubmitStatus('fallback');
-      setStatusMessage('Заявка подготовлена. Скоро добавим отправку.');
-      return;
-    }
+    setIsSubmitting(true);
+    setStatus({ type: 'idle', message: '' });
 
     try {
-      setSubmitStatus('loading');
-      setStatusMessage('');
-
-      const response = await fetch(webhookUrl, {
+      const response = await fetch('/api/lead', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
-        throw new Error(`Ошибка отправки: ${response.status}`);
+        throw new Error('Failed to submit lead');
       }
 
-      setSubmitStatus('success');
-      setStatusMessage('Заявка отправлена. Скоро свяжемся.');
       setFormData({ name: '', contact: '', task: '' });
+      setStatus({ type: 'success', message: 'Заявка отправлена. Скоро свяжемся.' });
     } catch (error) {
-      console.error('Не удалось отправить заявку:', error);
-      setSubmitStatus('error');
-      setStatusMessage('Не удалось отправить заявку. Попробуйте позже.');
+      setStatus({ type: 'error', message: 'Не удалось отправить заявку. Попробуйте позже.' });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -166,8 +154,26 @@ export default function App() {
 
       <section id="contact" className="section final">
         <div className="copy">
-          <h2>Бизнесу нужен не ещё один сайт. Нужна система.</h2>
-          <p className="muted">Опишите задачу — и мы предложим понятный план запуска.</p>
+          <p>Лендинг, приложение или автоматизация могут заменить хаос из таблиц, переписок и ручных процессов.</p>
+          <p className="muted">Понятные интерфейсы, современный визуал и системы, которыми удобно пользоваться каждый день.</p>
+          <form className="contactForm" onSubmit={handleSubmit}>
+            <label>
+              Имя
+              <input name="name" value={formData.name} onChange={handleChange} required />
+            </label>
+            <label>
+              Контакт для связи
+              <input name="contact" value={formData.contact} onChange={handleChange} required />
+            </label>
+            <label>
+              Краткое описание задачи
+              <textarea name="task" value={formData.task} onChange={handleChange} required rows={4} />
+            </label>
+            <button className="button primary" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+            </button>
+            {status.message && <p className={`submitMessage ${status.type}`}>{status.message}</p>}
+          </form>
         </div>
         <form className="leadForm" onSubmit={handleSubmit}>
           <label htmlFor="lead-name">Имя</label>
