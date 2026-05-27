@@ -127,9 +127,9 @@ export default function App() {
       </section>
 
       <section id="build" className="section">
-        <div className="grid">
-          {buildItems.map(([title, text, Icon]) => (
-            <article className="card" key={title}>
+        <div className="grid buildGrid">
+          {buildItems.map(([title, text, Icon], index) => (
+            <article className={`card buildCard buildCard--${index % 3}`} key={title}>
               <Icon size={24} />
               <h3>{title}</h3>
               <p>{text}</p>
