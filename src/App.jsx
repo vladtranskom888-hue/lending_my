@@ -81,7 +81,6 @@ export default function App() {
           <p className="muted">Запускаем быстро, масштабируем под ваши процессы.</p>
           <div className="actions">
             <a className="button primary" href="#contact">Отправить заявку <ArrowRight size={18} /></a>
-            <a className="button secondary" href="#build">Посмотреть возможности</a>
           </div>
           <div className="features">
             {['Современный визуал', 'Быстрый запуск', 'Удобные интерфейсы', 'Решения под задачу'].map((item) => (
