@@ -373,6 +373,7 @@ p {
 }
 
 .productSection {
+  align-items: start;
   gap: clamp(44px, 7vw, 92px);
 }
 
@@ -412,6 +413,10 @@ p {
 
 .productSection p br {
   display: none;
+}
+
+.productCopy > p:first-of-type {
+  margin-top: 24px;
 }
 
 .productVisualWrap {
