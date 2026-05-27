@@ -30,7 +30,7 @@ export default function App() {
   const [formData, setFormData] = useState({
     name: '',
     contact: '',
-    task: '',
+    message: '',
   });
   const [status, setStatus] = useState({ type: 'idle', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,14 +48,22 @@ export default function App() {
       const response = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          contact: formData.contact,
+          message: formData.message,
+          page: window.location.href,
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit lead');
+        const errorData = await response.json().catch(() => ({}));
+        const errorMessage = errorData?.error || 'Unknown API error';
+        console.error('Lead submit API error:', errorMessage);
+        throw new Error(errorMessage);
       }
 
-      setFormData({ name: '', contact: '', task: '' });
+      setFormData({ name: '', contact: '', message: '' });
       setStatus({ type: 'success', message: 'Заявка отправлена. Скоро свяжемся.' });
     } catch (error) {
       setStatus({ type: 'error', message: 'Не удалось отправить заявку. Попробуйте позже.' });
@@ -167,7 +175,7 @@ export default function App() {
             </label>
             <label>
               Краткое описание задачи
-              <textarea name="task" value={formData.task} onChange={handleChange} required rows={4} />
+              <textarea name="message" value={formData.message} onChange={handleChange} required rows={4} />
             </label>
             <button className="button primary" type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
