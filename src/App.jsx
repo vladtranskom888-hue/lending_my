@@ -132,10 +132,16 @@ export default function App() {
 
       <section id="product" className="section twoCols productSection">
         <div className="copy productCopy">
-          <span className="productEyebrow">Готовый продукт</span>
-          <h2>Интерфейс, который ускоряет решения команды</h2>
-          <p>Чёткая структура экранов, короткие сценарии и понятные статусы без лишних шагов.</p>
-          <p className="muted">Запускается быстро, работает стабильно, масштабируется под рост задач.</p>
+          <h2>Система для быстрых решений.</h2>
+          <p>
+            Чёткая структура,<br />
+            короткие сценарии<br />
+            и понятные статусы.
+          </p>
+          <p className="muted">
+            По мере роста задач<br />
+            процессы остаются понятными и удобными в работе.
+          </p>
         </div>
         <div className="productVisualWrap">
           <ImageBlock src="/images/product.png" alt="Современные интерфейсы, дашборды и мобильные экраны" />
