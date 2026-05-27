@@ -6,6 +6,7 @@
   --bg: #fafaf8;
   --text: #111111;
   --muted: #5f6368;
+  --muted-strong: #565b64;
   --surface: rgba(255, 255, 255, 0.78);
   --accent: #8e7cff;
   --accent-blue: #7c8cff;
@@ -184,7 +185,7 @@ h3 {
 p {
   margin-top: 22px;
   max-width: 620px;
-  color: rgba(95, 99, 104, 0.86);
+  color: rgba(86, 91, 100, 0.9);
   font-size: 18px;
   line-height: 1.65;
 }
@@ -197,7 +198,7 @@ p {
 }
 
 .muted {
-  color: var(--muted);
+  color: var(--muted-strong);
 }
 
 .actions {
@@ -301,7 +302,7 @@ p {
   font-size: 14px;
   line-height: 1.7;
   letter-spacing: 0.045em;
-  color: rgba(17, 17, 17, 0.58);
+  color: rgba(86, 91, 100, 0.86);
   text-wrap: pretty;
 }
 
@@ -466,7 +467,7 @@ p {
 .leadForm label {
   font-size: 14px;
   font-weight: 620;
-  color: rgba(17, 17, 17, 0.8);
+  color: rgba(86, 91, 100, 0.92);
 }
 
 .leadForm input,
@@ -490,7 +491,7 @@ p {
 
 .leadForm input::placeholder,
 .leadForm textarea::placeholder {
-  color: rgba(95, 99, 104, 0.78);
+  color: rgba(86, 91, 100, 0.84);
 }
 
 .leadForm input:focus,
