@@ -688,8 +688,11 @@ p {
 .directContacts {
   margin-top: 6px;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  text-align: center;
+  width: 100%;
+  flex-wrap: wrap;
   gap: 8px;
   color: rgba(86, 91, 100, 0.84);
   font-size: 14px;
@@ -697,6 +700,9 @@ p {
 }
 
 .directContacts a {
+  margin-left: 0;
+  align-self: auto;
+  text-align: inherit;
   color: inherit;
   transition: color 0.22s ease, opacity 0.22s ease;
 }
