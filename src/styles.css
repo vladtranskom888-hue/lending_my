@@ -207,6 +207,16 @@ p {
   margin-top: 40px;
 }
 
+.hero .actions {
+  justify-content: center;
+  width: 100%;
+}
+
+.hero .actions .button {
+  width: clamp(280px, 30vw, 360px);
+  padding-inline: 30px;
+}
+
 .features {
   display: flex;
   flex-wrap: wrap;
