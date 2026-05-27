@@ -157,6 +157,25 @@ nav {
   min-width: 0;
 }
 
+.contactSection {
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: stretch;
+  gap: clamp(40px, 7vw, 96px);
+}
+
+.contactCopy h2 {
+  max-width: 16ch;
+  margin-bottom: 20px;
+}
+
+.contactCopy p {
+  max-width: 56ch;
+}
+
+.contactCopy .muted {
+  margin-top: 18px;
+}
+
 h1,
 h2,
 h3,
@@ -626,14 +645,33 @@ p {
     padding: 20px;
     border-radius: 24px;
   }
+
+  .contactSection {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .contactCopy h2 {
+    max-width: 100%;
+  }
+
+  .contactForm {
+    max-width: 100%;
+    justify-self: stretch;
+  }
 }
 
 .contactForm {
-  width: min(520px, 100%);
+  width: 100%;
+  max-width: 560px;
+  justify-self: end;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin-top: 30px;
+  padding: clamp(20px, 2.6vw, 28px);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(17, 17, 17, 0.1);
 }
 
 .contactForm label {
@@ -650,7 +688,7 @@ p {
 .contactForm textarea {
   width: 100%;
   border: 1px solid var(--border-soft);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   border-radius: 16px;
   padding: 12px 14px;
   font: inherit;

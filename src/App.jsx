@@ -161,29 +161,30 @@ export default function App() {
         </div>
       </section>
 
-      <section id="contact" className="section final">
-        <div className="copy">
-          <p>Лендинг, приложение или автоматизация могут заменить хаос из таблиц, переписок и ручных процессов.</p>
-          <p className="muted">Понятные интерфейсы, современный визуал и системы, которыми удобно пользоваться каждый день.</p>
-          <form className="contactForm" onSubmit={handleSubmit}>
-            <label>
-              Имя
-              <input name="name" value={formData.name} onChange={handleChange} required />
-            </label>
-            <label>
-              Контакт для связи
-              <input name="contact" value={formData.contact} onChange={handleChange} required />
-            </label>
-            <label>
-              Краткое описание задачи
-              <textarea name="message" value={formData.message} onChange={handleChange} required rows={4} />
-            </label>
-            <button className="button primary" type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
-            </button>
-            {status.message && <p className={`submitMessage ${status.type}`}>{status.message}</p>}
-          </form>
+      <section id="contact" className="section final contactSection">
+        <div className="copy contactCopy">
+          <h2>Бизнесу нужен не ещё один сайт. Нужна система.</h2>
+          <p>Соберём лендинг, приложение или автоматизацию под вашу задачу — с понятной логикой, чистым интерфейсом и рабочей формой заявки.</p>
+          <p className="muted">Коротко опишите задачу, и мы предложим первый понятный шаг.</p>
         </div>
+        <form className="contactForm" onSubmit={handleSubmit}>
+          <label>
+            Имя
+            <input name="name" value={formData.name} onChange={handleChange} required />
+          </label>
+          <label>
+            Контакт для связи
+            <input name="contact" value={formData.contact} onChange={handleChange} required />
+          </label>
+          <label>
+            Краткое описание задачи
+            <textarea name="message" value={formData.message} onChange={handleChange} required rows={4} />
+          </label>
+          <button className="button primary" type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+          </button>
+          {status.message && <p className={`submitMessage ${status.type}`}>{status.message}</p>}
+        </form>
       </section>
     </main>
   );
