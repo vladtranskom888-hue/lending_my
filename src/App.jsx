@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ArrowRight, Check, Layers, LayoutDashboard, Workflow, FormInput, Link2, Sparkles } from 'lucide-react';
 
 const buildItems = [
@@ -25,6 +26,43 @@ function ImageBlock({ src, alt }) {
 }
 
 export default function App() {
+  const [formData, setFormData] = useState({
+    name: '',
+    contact: '',
+    task: '',
+  });
+  const [status, setStatus] = useState({ type: 'idle', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = ({ target }) => {
+    setFormData((prev) => ({ ...prev, [target.name]: target.value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setStatus({ type: 'idle', message: '' });
+
+    try {
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit lead');
+      }
+
+      setFormData({ name: '', contact: '', task: '' });
+      setStatus({ type: 'success', message: 'Заявка отправлена. Скоро свяжемся.' });
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Не удалось отправить заявку. Попробуйте позже.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main>
       <header className="header">
@@ -117,7 +155,24 @@ export default function App() {
         <div className="copy">
           <p>Лендинг, приложение или автоматизация могут заменить хаос из таблиц, переписок и ручных процессов.</p>
           <p className="muted">Понятные интерфейсы, современный визуал и системы, которыми удобно пользоваться каждый день.</p>
-          <a className="button primary" href="#contact">Обсудить проект <ArrowRight size={18} /></a>
+          <form className="contactForm" onSubmit={handleSubmit}>
+            <label>
+              Имя
+              <input name="name" value={formData.name} onChange={handleChange} required />
+            </label>
+            <label>
+              Контакт для связи
+              <input name="contact" value={formData.contact} onChange={handleChange} required />
+            </label>
+            <label>
+              Краткое описание задачи
+              <textarea name="task" value={formData.task} onChange={handleChange} required rows={4} />
+            </label>
+            <button className="button primary" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+            </button>
+            {status.message && <p className={`submitMessage ${status.type}`}>{status.message}</p>}
+          </form>
         </div>
         <ImageBlock src="/images/final.png" alt="Премиальный рабочий интерфейс для финального блока сайта" />
       </section>
