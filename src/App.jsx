@@ -27,24 +27,23 @@ function ImageBlock({ src, alt }) {
 
 
 export default function App() {
-  const [formData, setFormData] = useState({
-    name: '',
-    contact: '',
-    task: '',
-  });
-  const [status, setStatus] = useState({ type: 'idle', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = ({ target }) => {
-    setFormData((prev) => ({ ...prev, [target.name]: target.value }));
-  };
+  const [formData, setFormData] = useState({ name: '', contact: '', message: '' });
+  const [submitStatus, setSubmitStatus] = useState('idle');
+  const [statusMessage, setStatusMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsSubmitting(true);
-    setStatus({ type: 'idle', message: '' });
+
+    const payload = {
+      name: formData.name.trim(),
+      contact: formData.contact.trim(),
+      message: formData.message.trim(),
+    };
 
     try {
+      setSubmitStatus('loading');
+      setStatusMessage('');
+
       const response = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -55,8 +54,9 @@ export default function App() {
         throw new Error('Failed to submit lead');
       }
 
-      setFormData({ name: '', contact: '', task: '' });
-      setStatus({ type: 'success', message: 'Заявка отправлена. Скоро свяжемся.' });
+      setSubmitStatus('success');
+      setStatusMessage('Заявка отправлена. Скоро свяжемся.');
+      setFormData({ name: '', contact: '', message: '' });
     } catch (error) {
       setStatus({ type: 'error', message: 'Не удалось отправить заявку. Попробуйте позже.' });
     } finally {
@@ -201,9 +201,9 @@ export default function App() {
           <label htmlFor="lead-task">Что нужно сделать?</label>
           <textarea
             id="lead-task"
-            name="task"
-            value={formData.task}
-            onChange={(event) => setFormData((prev) => ({ ...prev, task: event.target.value }))}
+            name="message"
+            value={formData.message}
+            onChange={(event) => setFormData((prev) => ({ ...prev, message: event.target.value }))}
             placeholder="Коротко опишите задачу"
             rows={4}
             required
