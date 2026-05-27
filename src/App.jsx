@@ -74,17 +74,6 @@ export default function App() {
 
   return (
     <main>
-      <header className="header">
-        <div className="logo">Поток</div>
-        <nav>
-          <a href="#solutions">Решения</a>
-          <a href="#build">Возможности</a>
-          <a href="#product">Продукт</a>
-          <a href="#process">Процесс</a>
-        </nav>
-        <a className="smallButton" href="#contact">Обсудить проект</a>
-      </header>
-
       <section className="hero section">
         <div className="copy">
           <h1>Цифровые системы для роста бизнеса</h1>
