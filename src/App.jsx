@@ -89,7 +89,7 @@ export default function App() {
           <p>Лендинги, интерфейсы и автоматизация — в единой системе, без лишней сложности.</p>
           <p className="muted">Запускаем быстро, масштабируем под ваши процессы.</p>
           <div className="actions">
-            <a className="button primary" href="#contact">Отправить заявку <ArrowRight size={18} /></a>
+            <a className="button primary" href="#contact">Оформить заказ <ArrowRight size={18} /></a>
           </div>
           <div className="features">
             {['Современный визуал', 'Быстрый запуск', 'Удобные интерфейсы', 'Решения под задачу'].map((item) => (
@@ -180,7 +180,7 @@ export default function App() {
             <textarea name="message" value={formData.message} onChange={handleChange} required rows={4} />
           </label>
           <button className="button primary" type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+            {isSubmitting ? 'Отправка...' : 'Оформить заказ'}
           </button>
           {status.message && <p className={`submitMessage ${status.type}`}>{status.message}</p>}
           <p className="directContacts" aria-label="Прямые контакты">
