@@ -626,19 +626,15 @@ p {
   }
 
   .hero > .heroContactLine {
-    order: 1;
-    margin: 0;
-    row-gap: 6px;
+    display: none;
   }
 
   .hero > .copy {
-    order: 2;
     grid-column: auto;
     grid-row: auto;
   }
 
   .hero > .heroVisual {
-    order: 3;
     grid-column: auto;
   }
 
