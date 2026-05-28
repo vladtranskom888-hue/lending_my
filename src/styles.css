@@ -268,8 +268,9 @@ p {
 }
 
 .hero .actions {
-  justify-content: center;
-  width: 100%;
+  justify-content: flex-start;
+  width: auto;
+  margin-top: 52px;
 }
 
 .hero .actions .button {
