@@ -151,6 +151,24 @@ main {
 }
 
 
+.hero > .heroContactLine {
+  grid-column: 2;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin: 0 0 18px;
+}
+
+.hero > .copy {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.hero > .heroVisual {
+  grid-column: 2;
+}
+
+
 .heroVisual {
   display: flex;
   flex-direction: column;
@@ -158,12 +176,6 @@ main {
   width: 100%;
 }
 
-.heroVisual .heroContactLine {
-  margin: 0 0 18px;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-}
 
 .contactSection {
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
@@ -613,9 +625,21 @@ p {
     height: clamp(300px, 60vw, 420px);
   }
 
-  .heroVisual .heroContactLine {
-    margin-bottom: 14px;
+  .hero > .heroContactLine {
+    order: 1;
+    margin: 0;
     row-gap: 6px;
+  }
+
+  .hero > .copy {
+    order: 2;
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .hero > .heroVisual {
+    order: 3;
+    grid-column: auto;
   }
 
   .grid,

@@ -75,6 +75,15 @@ export default function App() {
   return (
     <main>
       <section className="hero section">
+        <p className="heroContactLine" aria-label="Контакты">
+          <a href="https://t.me/Vladkolikov" target="_blank" rel="noreferrer">Telegram</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://wa.me/79147301976" target="_blank" rel="noreferrer">WhatsApp</a>
+          <span aria-hidden="true">·</span>
+          <a href="tel:+79147301976">MAX</a>
+          <span aria-hidden="true">·</span>
+          <a href="mailto:vlsdtranskom888@gmail.com">Email</a>
+        </p>
         <div className="copy">
           <h1>Цифровые системы для роста бизнеса</h1>
           <p>Лендинги, интерфейсы и автоматизация — в единой системе, без лишней сложности.</p>
@@ -89,15 +98,6 @@ export default function App() {
           </div>
         </div>
         <div className="heroVisual">
-          <p className="heroContactLine" aria-label="Контакты">
-            <a href="https://t.me/Vladkolikov" target="_blank" rel="noreferrer">Telegram</a>
-            <span aria-hidden="true">·</span>
-            <a href="https://wa.me/79147301976" target="_blank" rel="noreferrer">WhatsApp</a>
-            <span aria-hidden="true">·</span>
-            <a href="tel:+79147301976">MAX</a>
-            <span aria-hidden="true">·</span>
-            <a href="mailto:vlsdtranskom888@gmail.com">Email</a>
-          </p>
           <ImageBlock src="/images/hero.png" alt="Современный рабочий интерфейс на ноутбуке" />
         </div>
       </section>
