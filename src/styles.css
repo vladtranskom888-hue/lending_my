@@ -150,6 +150,9 @@ main {
   opacity: 0.5;
 }
 
+.heroContactLineMobile {
+  display: none;
+}
 
 .hero > .heroContactLine {
   grid-column: 2;
@@ -628,6 +631,12 @@ p {
 
   .hero > .heroContactLine {
     display: none;
+  }
+
+  .hero .heroContactLineMobile {
+    display: flex;
+    margin: 0 0 18px;
+    justify-content: flex-start;
   }
 
   .hero > .copy {
