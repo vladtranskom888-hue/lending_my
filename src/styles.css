@@ -270,7 +270,7 @@ p {
 .hero .actions {
   justify-content: flex-start;
   width: auto;
-  margin-top: 52px;
+  margin-top: 24px;
 }
 
 .hero .actions .button {
