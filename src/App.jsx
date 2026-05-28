@@ -88,13 +88,13 @@ export default function App() {
           <h1>Цифровые системы для роста бизнеса</h1>
           <p>Лендинги, интерфейсы и автоматизация — в единой системе, без лишней сложности.</p>
           <p className="muted">Запускаем быстро, масштабируем под ваши процессы.</p>
-          <div className="actions">
-            <a className="button primary" href="#contact">Оформить заказ <ArrowRight size={18} /></a>
-          </div>
           <div className="features">
             {['Современный визуал', 'Быстрый запуск', 'Удобные интерфейсы', 'Решения под задачу'].map((item) => (
               <span key={item}><Check size={16} />{item}</span>
             ))}
+          </div>
+          <div className="actions">
+            <a className="button primary" href="#contact">Оформить заказ <ArrowRight size={18} /></a>
           </div>
         </div>
         <div className="heroVisual">
