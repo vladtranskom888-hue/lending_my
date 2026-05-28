@@ -118,6 +118,38 @@ main {
   min-width: 0;
 }
 
+.heroContactLine {
+  margin: 0 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: rgba(86, 91, 100, 0.78);
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.heroContactLine a {
+  color: inherit;
+  transition: color 0.22s ease, opacity 0.22s ease;
+}
+
+.heroContactLine a:hover {
+  color: rgba(17, 17, 17, 0.8);
+}
+
+.heroContactLine a:focus-visible {
+  outline: none;
+  color: rgba(17, 17, 17, 0.92);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.heroContactLine span {
+  opacity: 0.5;
+}
+
 .contactSection {
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   align-items: stretch;
