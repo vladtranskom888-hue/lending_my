@@ -281,27 +281,16 @@ p {
   padding-inline: 30px;
 }
 
-.features {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.hero .features {
+  max-width: 52ch;
   margin-top: 28px;
+  color: rgba(50, 54, 60, 0.74);
+  font-size: 13px;
+  font-weight: 560;
+  line-height: 1.8;
+  letter-spacing: 0.075em;
 }
 
-.features span {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 38px;
-  padding: 0 14px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  color: rgba(17, 17, 17, 0.70);
-  font-size: 14px;
-  box-shadow: var(--shadow-soft);
-}
-
-.features svg,
 .capability svg {
   color: var(--accent-blue);
 }
