@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, Check, Layers, LayoutDashboard, Workflow, FormInput, Link2, Sparkles } from 'lucide-react';
+import { ArrowRight, Layers, LayoutDashboard, Workflow, FormInput, Link2, Sparkles } from 'lucide-react';
 
 const buildItems = [
   ['Лендинги', 'Современные страницы для услуг, продуктов и рекламы.', Layers],
@@ -97,11 +97,7 @@ export default function App() {
           <h1>Цифровые системы для роста бизнеса</h1>
           <p>Лендинги, интерфейсы и автоматизация — в единой системе, без лишней сложности.</p>
           <p className="muted">Запускаем быстро, масштабируем под ваши процессы.</p>
-          <div className="features">
-            {['Современный визуал', 'Быстрый запуск', 'Удобные интерфейсы', 'Решения под задачу'].map((item) => (
-              <span key={item}><Check size={16} />{item}</span>
-            ))}
-          </div>
+          <p className="features">Современный визуал · Быстрый запуск · Удобные интерфейсы · Решения под задачу</p>
           <div className="actions">
             <a className="button primary" href="#contact">Оформить заказ <ArrowRight size={18} /></a>
           </div>
