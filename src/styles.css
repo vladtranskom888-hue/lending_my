@@ -408,48 +408,24 @@ p {
 }
 
 .timeline {
-  position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
   column-gap: clamp(22px, 3.2vw, 42px);
-  padding-top: 28px;
-  border-top: 1px solid rgba(17, 17, 17, 0.12);
 }
 
 .timelineStep {
-  position: relative;
   padding: 0 clamp(8px, 1.4vw, 18px) 0 0;
-}
-
-.timelineStep:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 34px;
-  right: calc(clamp(22px, 3.2vw, 42px) / -2);
-  width: clamp(34px, 4vw, 54px);
-  height: 1px;
-  background: rgba(17, 17, 17, 0.14);
-}
-
-.timelineStep::before {
-  content: "";
-  position: absolute;
-  top: -33px;
-  left: 0;
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: var(--text);
 }
 
 .timelineStep span {
   display: block;
-  margin-bottom: 18px;
-  color: rgba(17, 17, 17, 0.20);
+  margin-bottom: 24px;
+  color: rgba(17, 17, 17, 0.16);
   font-size: clamp(42px, 5.8vw, 70px);
-  font-weight: 680;
+  font-weight: 620;
   line-height: 0.92;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.075em;
 }
 
 .productSection {
@@ -692,10 +668,6 @@ p {
     row-gap: 34px;
   }
 
-  .timelineStep:not(:last-child)::after {
-    display: none;
-  }
-
   .productSection {
     gap: 34px;
   }
@@ -759,28 +731,17 @@ p {
 
   .timeline {
     grid-template-columns: 1fr;
-    row-gap: 0;
-    padding-top: 0;
-    border-top: 0;
+    row-gap: 34px;
   }
 
   .timelineStep {
-    padding: 26px 0 28px 54px;
-    border-top: 1px solid rgba(17, 17, 17, 0.10);
-  }
-
-  .timelineStep::before {
-    top: 34px;
-    left: 0;
+    padding: 0;
   }
 
   .timelineStep span {
-    position: absolute;
-    top: 24px;
-    left: 16px;
-    margin-bottom: 0;
-    font-size: 24px;
-    letter-spacing: -0.05em;
+    margin-bottom: 16px;
+    font-size: 38px;
+    letter-spacing: -0.06em;
   }
 }
 
