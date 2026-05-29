@@ -270,9 +270,18 @@ p {
   margin-top: 40px;
 }
 
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 28px auto 0;
+}
+
 .hero .actions {
   justify-content: center;
-  width: min(100%, 52ch);
+  width: 100%;
   margin-top: 24px;
 }
 
@@ -282,9 +291,9 @@ p {
 }
 
 .hero .features {
-  width: min(100%, 52ch);
-  max-width: 52ch;
-  margin-top: 28px;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0;
   color: rgba(50, 54, 60, 0.74);
   font-size: 13px;
   font-weight: 560;
@@ -725,6 +734,10 @@ p {
 }
 
 @media (max-width: 640px) {
+  .hero .features span {
+    white-space: normal;
+  }
+
   .editorialGrid {
     grid-template-columns: 1fr;
     row-gap: 6px;

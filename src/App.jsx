@@ -97,12 +97,14 @@ export default function App() {
           <h1>Цифровые системы для роста бизнеса</h1>
           <p>Лендинги, интерфейсы и автоматизация — в единой системе, без лишней сложности.</p>
           <p className="muted">Запускаем быстро, масштабируем под ваши процессы.</p>
-          <p className="features">
-            <span>Современный визуал · Быстрый запуск</span>
-            <span>Удобные интерфейсы · Решения под задачу</span>
-          </p>
-          <div className="actions">
-            <a className="button primary" href="#contact">Оформить заказ <ArrowRight size={18} /></a>
+          <div className="hero-cta-group">
+            <p className="features">
+              <span>Современный визуал · Быстрый запуск</span>
+              <span>Удобные интерфейсы · Решения под задачу</span>
+            </p>
+            <div className="actions">
+              <a className="button primary" href="#contact">Оформить заказ <ArrowRight size={18} /></a>
+            </div>
           </div>
         </div>
         <div className="heroVisual">
