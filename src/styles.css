@@ -383,16 +383,6 @@ p {
   padding: 34px 22px 38px 0;
 }
 
-.capability:not(:nth-child(3n))::after {
-  content: "";
-  position: absolute;
-  top: 34px;
-  right: calc(clamp(28px, 4.5vw, 64px) / -2);
-  bottom: 34px;
-  width: 1px;
-  background: rgba(17, 17, 17, 0.045);
-}
-
 .capability svg {
   width: 22px;
   height: 22px;
@@ -697,21 +687,6 @@ p {
     padding: 30px 18px 34px 0;
   }
 
-  .capability:not(:nth-child(3n))::after {
-    display: none;
-  }
-
-  .capability:not(:nth-child(2n))::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 30px;
-    right: calc(clamp(24px, 6vw, 42px) / -2);
-    bottom: 30px;
-    width: 1px;
-    background: rgba(17, 17, 17, 0.045);
-  }
-
   .timeline {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: 34px;
@@ -776,10 +751,6 @@ p {
 
   .capability {
     padding: 26px 0 28px;
-  }
-
-  .capability:not(:nth-child(2n))::after {
-    display: none;
   }
 
   .capability svg {
