@@ -161,7 +161,7 @@ export default function App() {
         <div className="timeline">
           {steps.map(([title, text], index) => (
             <article className="timelineStep" key={title}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
+              <span>{index + 1}</span>
               <h3>{title}</h3>
               <p>{text}</p>
             </article>
