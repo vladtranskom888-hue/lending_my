@@ -302,7 +302,7 @@ p {
 }
 
 .features svg,
-.card svg {
+.capability svg {
   color: var(--accent-blue);
 }
 
@@ -369,60 +369,99 @@ p {
   text-wrap: pretty;
 }
 
-.grid {
+.editorialGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-bottom: 38px;
+  column-gap: clamp(28px, 4.5vw, 64px);
+  row-gap: 0;
+  margin-bottom: 46px;
+  border-top: 1px solid rgba(17, 17, 17, 0.10);
 }
 
-.card,
-.step {
-  padding: 32px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.76);
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.capability {
+  position: relative;
+  min-height: 218px;
+  padding: 30px 22px 34px 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.10);
 }
 
-.card:hover,
-.step:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 28px 70px rgba(17, 17, 17, 0.10);
+.capability:not(:nth-child(3n))::after {
+  content: "";
+  position: absolute;
+  top: 28px;
+  right: calc(clamp(28px, 4.5vw, 64px) / -2);
+  bottom: 28px;
+  width: 1px;
+  background: rgba(17, 17, 17, 0.07);
 }
 
-.card svg {
-  margin-bottom: 22px;
+.capability svg {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 26px;
+  color: rgba(124, 140, 255, 0.72);
+  stroke-width: 1.7;
 }
 
-.card p,
-.step p {
+.capability h3,
+.timelineStep h3 {
+  font-size: clamp(20px, 2vw, 24px);
+}
+
+.capability p,
+.timelineStep p {
   margin-top: 12px;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .process .visual {
-  margin-bottom: 28px;
+  margin-bottom: clamp(34px, 5vw, 62px);
 }
 
-.steps {
+.timeline {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  column-gap: clamp(22px, 3.2vw, 42px);
+  padding-top: 28px;
+  border-top: 1px solid rgba(17, 17, 17, 0.12);
 }
 
-.step span {
-  display: inline-flex;
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  border-radius: 50%;
+.timelineStep {
+  position: relative;
+  padding: 0 clamp(8px, 1.4vw, 18px) 0 0;
+}
+
+.timelineStep:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 34px;
+  right: calc(clamp(22px, 3.2vw, 42px) / -2);
+  width: clamp(34px, 4vw, 54px);
+  height: 1px;
+  background: rgba(17, 17, 17, 0.14);
+}
+
+.timelineStep::before {
+  content: "";
+  position: absolute;
+  top: -33px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
   background: var(--text);
-  color: #fff;
-  font-weight: 700;
+}
+
+.timelineStep span {
+  display: block;
+  margin-bottom: 18px;
+  color: rgba(17, 17, 17, 0.20);
+  font-size: clamp(42px, 5.8vw, 70px);
+  font-weight: 680;
+  line-height: 0.92;
+  letter-spacing: -0.08em;
 }
 
 .productSection {
@@ -648,14 +687,39 @@ p {
     grid-column: auto;
   }
 
-  .grid,
-  .steps {
-    grid-template-columns: 1fr;
+  .editorialGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(24px, 6vw, 42px);
+    margin-bottom: 34px;
   }
 
-  .card,
-  .step {
-    padding: 28px;
+  .capability {
+    min-height: auto;
+    padding: 28px 18px 30px 0;
+  }
+
+  .capability:not(:nth-child(3n))::after {
+    display: none;
+  }
+
+  .capability:not(:nth-child(2n))::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 26px;
+    right: calc(clamp(24px, 6vw, 42px) / -2);
+    bottom: 26px;
+    width: 1px;
+    background: rgba(17, 17, 17, 0.07);
+  }
+
+  .timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 34px;
+  }
+
+  .timelineStep:not(:last-child)::after {
+    display: none;
   }
 
   .productSection {
@@ -702,6 +766,51 @@ p {
   .contactForm {
     max-width: 100%;
     justify-self: stretch;
+  }
+}
+
+@media (max-width: 640px) {
+  .editorialGrid {
+    grid-template-columns: 1fr;
+    border-top-color: rgba(17, 17, 17, 0.09);
+  }
+
+  .capability {
+    padding: 26px 0 28px;
+  }
+
+  .capability:not(:nth-child(2n))::after {
+    display: none;
+  }
+
+  .capability svg {
+    margin-bottom: 18px;
+  }
+
+  .timeline {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .timelineStep {
+    padding: 26px 0 28px 54px;
+    border-top: 1px solid rgba(17, 17, 17, 0.10);
+  }
+
+  .timelineStep::before {
+    top: 34px;
+    left: 0;
+  }
+
+  .timelineStep span {
+    position: absolute;
+    top: 24px;
+    left: 16px;
+    margin-bottom: 0;
+    font-size: 24px;
+    letter-spacing: -0.05em;
   }
 }
 

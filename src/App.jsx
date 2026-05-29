@@ -126,9 +126,9 @@ export default function App() {
       </section>
 
       <section id="build" className="section">
-        <div className="grid">
+        <div className="editorialGrid">
           {buildItems.map(([title, text, Icon]) => (
-            <article className="card" key={title}>
+            <article className="capability" key={title}>
               <Icon size={24} />
               <h3>{title}</h3>
               <p>{text}</p>
@@ -158,10 +158,10 @@ export default function App() {
 
       <section id="process" className="section process">
         <ImageBlock src="/images/process.png" alt="Визуал рабочего процесса от задачи до запуска" />
-        <div className="steps">
+        <div className="timeline">
           {steps.map(([title, text], index) => (
-            <article className="step" key={title}>
-              <span>{index + 1}</span>
+            <article className="timelineStep" key={title}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
               <h3>{title}</h3>
               <p>{text}</p>
             </article>
