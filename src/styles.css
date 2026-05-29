@@ -373,26 +373,24 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   column-gap: clamp(28px, 4.5vw, 64px);
-  row-gap: 0;
+  row-gap: clamp(8px, 2vw, 18px);
   margin-bottom: 46px;
-  border-top: 1px solid rgba(17, 17, 17, 0.10);
 }
 
 .capability {
   position: relative;
   min-height: 218px;
-  padding: 30px 22px 34px 0;
-  border-bottom: 1px solid rgba(17, 17, 17, 0.10);
+  padding: 34px 22px 38px 0;
 }
 
 .capability:not(:nth-child(3n))::after {
   content: "";
   position: absolute;
-  top: 28px;
+  top: 34px;
   right: calc(clamp(28px, 4.5vw, 64px) / -2);
-  bottom: 28px;
+  bottom: 34px;
   width: 1px;
-  background: rgba(17, 17, 17, 0.07);
+  background: rgba(17, 17, 17, 0.045);
 }
 
 .capability svg {
@@ -690,12 +688,13 @@ p {
   .editorialGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: clamp(24px, 6vw, 42px);
+    row-gap: 10px;
     margin-bottom: 34px;
   }
 
   .capability {
     min-height: auto;
-    padding: 28px 18px 30px 0;
+    padding: 30px 18px 34px 0;
   }
 
   .capability:not(:nth-child(3n))::after {
@@ -706,11 +705,11 @@ p {
     content: "";
     display: block;
     position: absolute;
-    top: 26px;
+    top: 30px;
     right: calc(clamp(24px, 6vw, 42px) / -2);
-    bottom: 26px;
+    bottom: 30px;
     width: 1px;
-    background: rgba(17, 17, 17, 0.07);
+    background: rgba(17, 17, 17, 0.045);
   }
 
   .timeline {
@@ -772,7 +771,7 @@ p {
 @media (max-width: 640px) {
   .editorialGrid {
     grid-template-columns: 1fr;
-    border-top-color: rgba(17, 17, 17, 0.09);
+    row-gap: 6px;
   }
 
   .capability {
