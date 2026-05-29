@@ -271,8 +271,8 @@ p {
 }
 
 .hero .actions {
-  justify-content: flex-start;
-  width: auto;
+  justify-content: center;
+  width: min(100%, 52ch);
   margin-top: 24px;
 }
 
@@ -282,19 +282,23 @@ p {
 }
 
 .hero .features {
+  width: min(100%, 52ch);
   max-width: 52ch;
   margin-top: 28px;
   color: rgba(50, 54, 60, 0.74);
   font-size: 13px;
   font-weight: 560;
   display: grid;
+  justify-items: center;
   gap: 6px;
   line-height: 1.8;
+  text-align: center;
   letter-spacing: 0.075em;
 }
 
 .hero .features span {
   display: block;
+  white-space: nowrap;
 }
 
 .capability svg {
