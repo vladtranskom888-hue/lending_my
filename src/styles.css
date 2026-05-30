@@ -6,10 +6,10 @@
   --bg: #fafaf8;
   --text: #111111;
   --heading: #24272d;
-  --muted: #444850;
-  --muted-strong: #383d45;
-  --muted-soft: rgba(56, 61, 69, 0.96);
-  --muted-subtle: rgba(56, 61, 69, 0.90);
+  --muted: #3d424a;
+  --muted-strong: #30363e;
+  --muted-soft: rgba(48, 54, 62, 0.98);
+  --muted-subtle: rgba(48, 54, 62, 0.96);
   --surface: rgba(255, 255, 255, 0.78);
   --accent: #8e7cff;
   --accent-blue: #7c8cff;
@@ -232,7 +232,7 @@ h3 {
   border-radius: 999px;
   border: 1px solid rgba(124, 140, 255, 0.26);
   background: rgba(255, 255, 255, 0.78);
-  color: rgba(17, 17, 17, 0.8);
+  color: rgba(17, 17, 17, 0.84);
   font-size: 12px;
   font-weight: 640;
   letter-spacing: 0.09em;
@@ -311,7 +311,7 @@ p {
   width: fit-content;
   max-width: 100%;
   margin-top: 0;
-  color: rgba(45, 49, 56, 0.90);
+  color: rgba(39, 43, 50, 0.94);
   font-size: 13px;
   font-weight: 560;
   display: grid;
@@ -482,7 +482,7 @@ p {
   border-radius: 999px;
   border: 1px solid rgba(124, 140, 255, 0.24);
   background: rgba(255, 255, 255, 0.84);
-  color: rgba(17, 17, 17, 0.78);
+  color: rgba(17, 17, 17, 0.82);
   font-size: 12px;
   font-weight: 640;
   letter-spacing: 0.08em;
@@ -614,6 +614,7 @@ p {
 
 .formMessage {
   margin-top: 2px;
+  color: var(--muted-strong);
   font-size: 15px;
   line-height: 1.5;
 }
@@ -802,7 +803,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  color: var(--text);
+  color: var(--muted-strong);
   font-weight: 560;
   font-size: 14px;
 }
@@ -815,7 +816,7 @@ p {
   border-radius: 16px;
   padding: 12px 14px;
   font: inherit;
-  color: var(--text);
+  color: var(--muted-strong);
 }
 
 .contactForm textarea {
@@ -835,6 +836,7 @@ p {
 
 .submitMessage {
   margin-top: 4px;
+  color: var(--muted-strong);
   font-size: 16px;
 }
 
