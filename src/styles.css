@@ -5,6 +5,7 @@
 :root {
   --bg: #fafaf8;
   --text: #111111;
+  --heading: #24272d;
   --muted: #444850;
   --muted-strong: #383d45;
   --muted-soft: rgba(56, 61, 69, 0.96);
@@ -214,6 +215,12 @@ h2,
 h3,
 p {
   margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--heading);
 }
 
 .eyebrow {
