@@ -80,7 +80,7 @@ export default function App() {
           <span aria-hidden="true">·</span>
           <a href="https://wa.me/79147301976" target="_blank" rel="noreferrer">WhatsApp</a>
           <span aria-hidden="true">·</span>
-          <a href="tel:+79147301976">MAX</a>
+          <a href="https://max.ru/u/f9LHodD0cOKS9xYTmSLkfkgBpXMKaRamsQiy41UzLuEw0LCihhQGztOrZtY">MAX</a>
           <span aria-hidden="true">·</span>
           <a href="mailto:vlsdtranskom888@gmail.com">Email</a>
         </p>
@@ -90,7 +90,7 @@ export default function App() {
             <span aria-hidden="true">·</span>
             <a href="https://wa.me/79147301976" target="_blank" rel="noreferrer">WhatsApp</a>
             <span aria-hidden="true">·</span>
-            <a href="tel:+79147301976">MAX</a>
+            <a href="https://max.ru/u/f9LHodD0cOKS9xYTmSLkfkgBpXMKaRamsQiy41UzLuEw0LCihhQGztOrZtY">MAX</a>
             <span aria-hidden="true">·</span>
             <a href="mailto:vlsdtranskom888@gmail.com">Email</a>
           </p>
@@ -198,7 +198,7 @@ export default function App() {
             <span aria-hidden="true">·</span>
             <a href="https://wa.me/79147301976" target="_blank" rel="noreferrer">WhatsApp</a>
             <span aria-hidden="true">·</span>
-            <a href="tel:+79147301976">MAX</a>
+            <a href="https://max.ru/u/f9LHodD0cOKS9xYTmSLkfkgBpXMKaRamsQiy41UzLuEw0LCihhQGztOrZtY">MAX</a>
             <span aria-hidden="true">·</span>
             <a href="mailto:vlsdtranskom888@gmail.com">Email</a>
           </p>
